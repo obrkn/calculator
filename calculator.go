@@ -15,17 +15,16 @@ func Handler() {
 
 func index(w http.ResponseWriter, rq *http.Request) {
 	// fmt.Fprintln(w, "こんにちは")
-	type Inventory struct {
+	item := struct {
 		Formula string
-		Count   uint
+	}{
+		rq.FormValue("formula"),
 	}
-	sweaters := Inventory{"wool", 17}
-	fmt.Println(rq.FormValue("formula"))
 	tmpl, err := template.ParseFiles("templates/index.html")
 	if err != nil {
 		panic(err)
 	}
-	err = tmpl.Execute(w, sweaters)
+	err = tmpl.Execute(w, item)
 	if err != nil {
 		panic(err)
 	}
