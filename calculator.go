@@ -10,7 +10,7 @@ import (
 func Handler() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/result", result)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8000", nil)
 }
 
 func index(w http.ResponseWriter, rq *http.Request) {
